@@ -18,11 +18,15 @@ client.login(TOKEN)
 
 client.on("ready", botReady)
 client.on("messageCreate", getMessage)
-client.on("guildCreate", guildJoin)
 
 async function botReady(){
     const date = new Date();
     console.log(`[Logs @${date.toUTCString()}] ${client.user.username} has connected to Discord\n`);
+
+    let conan = await client.users.fetch("351822142989402123")
+    await conan.send("Chalert joined "+guild.name+" (id: "+guild.id+")")
+
+
 }
 
 async function getMessage(message){
@@ -30,7 +34,4 @@ async function getMessage(message){
     else{
         commandHandler(message);
     }
-}
-
-async function guildJoin(guild){
 }
